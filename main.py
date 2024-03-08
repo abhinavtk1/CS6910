@@ -1,5 +1,4 @@
 import numpy as np
-import matplotlib.pyplot as plt
 from keras.datasets import fashion_mnist
 
 # Load Fashion-MNIST dataset
@@ -24,7 +23,7 @@ def ReLU(Z):
     return np.maximum(0, Z)
 
 def softmax(Z):
-    A = np.exp(Z) / np.sum(np.exp(Z))
+    A = np.exp(Z) / np.sum(np.exp(Z),axis=0)
     return A
 
 def fwd_prop(W1, b1, W2, b2):
@@ -37,4 +36,4 @@ def fwd_prop(W1, b1, W2, b2):
 W1, b1, W2, b2 = init_weights()
 Z1, A1, Z2, A2 = fwd_prop(W1, b1, W2, b2)
 
-print(A2[0:10])
+print(sum(A2[0]))
